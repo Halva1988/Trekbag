@@ -1,9 +1,15 @@
-const ItemList = ({ items, handleChangePacked }) => {
-
+const ItemList = ({ items, handleChangePacked, handleRemoveItem }) => {
 	return (
 		<ul>
 			{items.map((item) => {
-				return <Item key={item.id} item={item} handleChangePacked={handleChangePacked} />;
+				return (
+					<Item
+						key={item.id}
+						item={item}
+						handleChangePacked={handleChangePacked}
+						handleRemoveItem={handleRemoveItem}
+					/>
+				);
 			})}
 		</ul>
 	);
@@ -11,15 +17,24 @@ const ItemList = ({ items, handleChangePacked }) => {
 
 export default ItemList;
 
-const Item = ({ item, handleChangePacked }) => {
-	
+const Item = ({ item, handleChangePacked, handleRemoveItem }) => {
 	return (
 		<li className="item">
 			<label>
-				<input type="checkbox" checked={item.packed} onChange={() => handleChangePacked(item.id)} />
+				<input
+					type="checkbox"
+					checked={item.packed}
+					onChange={() => handleChangePacked(item.id)}
+				/>
 				{item.name}
 			</label>
-			<button>⚒</button>
+			<button
+				onClick={() => {
+					handleRemoveItem(item.id);
+				}}
+			>
+				⚒
+			</button>
 		</li>
 	);
 };

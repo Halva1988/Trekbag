@@ -44,12 +44,17 @@ function App() {
 		setItems([]);
 	};
 
+	const handleRemoveItem = (id) => {
+		const newItems = items.filter((item) => item.id !== id);
+		setItems(newItems);
+	}
+
 	return (
 		<>
 			<BackgroundHeading />
 			<main className="app">
 				<Header />
-				<ItemList items={items} handleChangePacked={handleChangePacked} />
+				<ItemList items={items} handleChangePacked={handleChangePacked} handleRemoveItem={handleRemoveItem} />
 				<Sidebar
 					handleMarkAllAsComplete={handleMarkAllAsComplete}
 					handleMarkAllAsIncomplete={handleMarkAllAsIncomplete}

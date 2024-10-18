@@ -1,5 +1,12 @@
-const Button = ({ type, children }) => {
-	return <button className={`btn ${type === "secondary" ? "btn--secondary" : ""}`}>{children}</button>;
+const Button = ({ onClick, type, children }) => {
+	return (
+		<button
+			onClick={onClick}
+			className={`btn ${type === "secondary" ? "btn--secondary" : ""}`}
+		>
+			{children}
+		</button>
+	);
 };
 
 export default Button;

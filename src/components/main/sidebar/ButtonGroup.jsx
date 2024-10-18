@@ -1,13 +1,30 @@
 import Button from "../../Button";
-import { SECONDARY_BUTTONS } from "../../lib/constants";
 
-const ButtonGroup = () => {
+const ButtonGroup = ({
+	handleMarkAllAsComplete,
+	handleMarkAllAsIncomplete,
+	handleRemoveAllItems,
+}) => {
+	const secondaryButtons = [
+		{
+			text: "Mark all as complete",
+			onClick: handleMarkAllAsComplete,
+		},
+		{
+			text: "Mark all as incomplete",
+			onClick: handleMarkAllAsIncomplete,
+		},
+		{
+			text: "Remove all items",
+			onClick: handleRemoveAllItems,
+		},
+	];
 	return (
 		<section className="button-group">
-			{SECONDARY_BUTTONS.map((title) => {
+			{secondaryButtons.map(({ text, onClick }) => {
 				return (
-					<Button key={title} type="secondary">
-						{title}
+					<Button key={text} type="secondary" onClick={onClick}>
+						{text}
 					</Button>
 				);
 			})}

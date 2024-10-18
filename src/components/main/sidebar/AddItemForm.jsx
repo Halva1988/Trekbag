@@ -1,7 +1,7 @@
 import { useRef, useState } from "react";
 import Button from "../../Button";
 
-const AddItemForm = ({ setItems }) => {
+const AddItemForm = ({ handleAddItem }) => {
 	const [itemText, setItemText] = useState("");
   const inputRef = useRef();
 
@@ -12,13 +12,8 @@ const AddItemForm = ({ setItems }) => {
       inputRef.current.focus();
       return;
     }
-
-		const newItem = {
-      id: Date.now(),
-			name: itemText,
-			packed: false,
-		};
-		setItems((prev) => [...prev, newItem]);
+		
+    handleAddItem(itemText);
     setItemText('');
 	};
 

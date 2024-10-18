@@ -1,9 +1,23 @@
+const ItemList = ({ items }) => {
+	return (
+		<ul >
+      {items.map((item) => {
+        return <Item key={item.id} item={item} />
+      })}
+		</ul>
+	);
+};
 
+export default ItemList;
 
-const ItemList = () => {
-  return (
-    <div>ItemList</div>
-  )
-}
-
-export default ItemList
+const Item = ({ item }) => {
+	return (
+		<li className="item">
+			<label>
+				<input type="checkbox" />
+				{item.name}
+			</label>
+      <button>⚒</button>
+		</li>
+	);
+};

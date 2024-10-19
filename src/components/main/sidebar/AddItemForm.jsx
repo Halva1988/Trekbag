@@ -24,7 +24,7 @@ const AddItemForm = ({ handleAddItem }) => {
 	return (
 		<form onSubmit={handleSubmit}>
 			<h2>Add an item</h2>
-      <input ref={inputRef} value={itemText} onChange={handleChange} autoFocus/>
+      <input ref={inputRef} value={itemText} onChange={handleChange} autoFocus placeholder="Passport..."/>
 			<Button>Add to list</Button>
 		</form>
 	);

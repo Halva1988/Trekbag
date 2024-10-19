@@ -9,6 +9,9 @@ import { initialItems } from "./lib/constants";
 function App() {
 	const [items, setItems] = useState(initialItems);
 
+	const numbersOfItems = items.length;
+	const packedItems = items.filter((item) => item.packed).length;
+
 	const handleAddItem = (itemText) => {
 		const newItem = {
 			id: Date.now(),
@@ -18,30 +21,30 @@ function App() {
 
 		setItems([...items, newItem]);
 	};
-
-	const handleChangePacked = (id) => {
-		const newItems = items.map((item) =>
-			item.id === id ? { ...item, packed: !item.packed } : item
-		);
-		setItems(newItems);
-	};
-
+	
 	const handleMarkAllAsComplete = () => {
 		const newItems = items.map((item) => {
 			return { ...item, packed: true }
 		})
 		setItems(newItems);
 	};
-
+	
 	const handleMarkAllAsIncomplete = () => {
 		const newItems = items.map((item) => {
 			return { ...item, packed: false }
 		})
 		setItems(newItems);
 	};
-
+	
 	const handleRemoveAllItems = () => {
 		setItems([]);
+	};
+	
+	const handleToggleItem = (id) => {
+		const newItems = items.map((item) =>
+			item.id === id ? { ...item, packed: !item.packed } : item
+		);
+		setItems(newItems);
 	};
 
 	const handleRemoveItem = (id) => {
@@ -53,8 +56,8 @@ function App() {
 		<>
 			<BackgroundHeading />
 			<main className="app">
-				<Header />
-				<ItemList items={items} handleChangePacked={handleChangePacked} handleRemoveItem={handleRemoveItem} />
+				<Header numbersOfItems={numbersOfItems} packedItems={packedItems} />
+				<ItemList items={items} handleToggleItem={handleToggleItem} handleRemoveItem={handleRemoveItem} />
 				<Sidebar
 					handleMarkAllAsComplete={handleMarkAllAsComplete}
 					handleMarkAllAsIncomplete={handleMarkAllAsIncomplete}

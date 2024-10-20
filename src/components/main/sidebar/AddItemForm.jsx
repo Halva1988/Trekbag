@@ -1,7 +1,9 @@
 import { useRef, useState } from "react";
 import Button from "../../Button";
+import { useItemsContext } from "../../../lib/hooks";
 
-const AddItemForm = ({ handleAddItem }) => {
+const AddItemForm = () => {
+	const { handleAddItem } = useItemsContext();
 	const [itemText, setItemText] = useState("");
   const inputRef = useRef();
 
@@ -24,7 +26,7 @@ const AddItemForm = ({ handleAddItem }) => {
 	return (
 		<form onSubmit={handleSubmit}>
 			<h2>Add an item</h2>
-      <input ref={inputRef} value={itemText} onChange={handleChange} autoFocus placeholder="Passport..."/>
+      <input ref={inputRef} value={itemText} onChange={handleChange} autoFocus placeholder="Passport...?"/>
 			<Button>Add to list</Button>
 		</form>
 	);

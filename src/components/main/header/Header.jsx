@@ -1,11 +1,11 @@
 import Counter from "./Counter";
 import Logo from "./Logo";
 
-const Header = ({ numbersOfItems, packedItems }) => {
+const Header = () => {
 	return (
 		<header>
 			<Logo />
-			<Counter numbersOfItems={numbersOfItems} packedItems={packedItems} />
+			<Counter />
 		</header>
 	);
 };

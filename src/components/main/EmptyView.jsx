@@ -1,3 +1,5 @@
+
+
 const EmptyView = () => {
 	return (
     <section className="empty-state">
